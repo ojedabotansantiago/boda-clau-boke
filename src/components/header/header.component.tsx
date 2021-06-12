@@ -17,7 +17,7 @@ const Title = styled.h1`
 `;
 const Subtitle = styled.p`
   @media (min-width: 970px) {
-    font-size: 4em;
+    font-size: 3em;
   }
   @media (max-width: 500px) {
     font-size: 1em;

@@ -6,9 +6,9 @@ type PictureProps = {
 };
 
 const Image = styled.img.attrs((props: any) => ({
-  src: props.theme.images.main.src,
+  src: getImage(props),
 }))`
-  width: 62%;
+  width: 50%;
 `;
 
 const ImageContainer = styled.div`
@@ -16,12 +16,41 @@ const ImageContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  margin-left: 20%;
+  margin-left: 27%;
 `;
-export const PictureComponent = (HeaderProps: PictureProps) => {
+export const PictureComponent = (pictureProps: PictureProps) => {
+  console.log(pictureProps);
+
   return (
     <ImageContainer>
-      <Image></Image>
+      <Image src={pictureProps.src}></Image>
     </ImageContainer>
   );
+};
+
+const getImage = (prop: any): any => {
+  console.log(prop);
+  let urlImage;
+  if (prop.src === '1section') {
+    urlImage = prop.theme.images.main.src;
+  }
+  if (prop.src === '2section') {
+    urlImage = prop.theme.images.secondSection.src;
+  }
+  if (prop.src === '3section') {
+    urlImage = prop.theme.images.threeSection.src;
+  }
+  if (prop.src === '4section') {
+    urlImage = prop.theme.images.fourSection.src;
+  }
+  if (prop.src === '5section') {
+    urlImage = prop.theme.images.fiveSection.src;
+  }
+  if (prop.src === '6section') {
+    urlImage = prop.theme.images.sixSection.src;
+  }
+  if (prop.src === '7section') {
+    urlImage = prop.theme.images.sevenSection.src;
+  }
+  return urlImage;
 };
