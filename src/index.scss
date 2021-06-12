@@ -1,0 +1,12 @@
+
+@font-face {
+  font-family: 'indie-flower';
+  src: url('./assets/fonts/indie-flower/IndieFlower-Regular.ttf');
+}
+$font-stack:'indie-flower';
+
+body {
+  font-family: $font-stack;
+}
+
+
