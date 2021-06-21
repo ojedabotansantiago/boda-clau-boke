@@ -12,11 +12,10 @@ const Image = styled.img.attrs((props: any) => ({
 `;
 
 const ImageContainer = styled.div`
-  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  margin-left: 27%;
+  margin-left: 33%;
 `;
 export const PictureComponent = (pictureProps: PictureProps) => {
   console.log(pictureProps);
