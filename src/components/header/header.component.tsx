@@ -10,7 +10,7 @@ const Title = styled.h1`
     font-size: 5em;
   }
   @media (max-width: 500px) {
-    font-size: 1em;
+    font-size: 2em;
   }
   text-align: center;
   color: ${(props) => props.theme.palette.primary.main};
