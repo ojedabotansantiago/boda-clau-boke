@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from './assets/theme/theme';
 import { PictureComponent } from './components/picture/picture.component';
 import { SectionEntry } from './components/textEntry/section.component';
+import { FormComponent } from './components/form/form.component';
 
 function App() {
   type SectionEntryProp = {
@@ -117,6 +118,8 @@ function App() {
           titleSection={sectionEntryForm.titleSection}
           mainText={sectionEntryForm.mainText}
         ></SectionEntry>
+        <FormComponent></FormComponent>
+
       </div>
     </ThemeProvider>
   );

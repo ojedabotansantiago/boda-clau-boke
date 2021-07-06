@@ -21,6 +21,12 @@ export const defaultTheme: DefaultTheme = {
       main: '#709fb0',
       contrastText: '#ffffff',
     },
+    error: {
+      main: '#ff0000',
+    },
+    buttonSubmit: {
+      main: '#0004f542',
+    }
   },
   images: {
     main: {
