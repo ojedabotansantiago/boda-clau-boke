@@ -18,7 +18,6 @@ const ImageContainer = styled.div`
   margin-left: 33%;
 `;
 export const PictureComponent = (pictureProps: PictureProps) => {
-  console.log(pictureProps);
 
   return (
     <ImageContainer>
@@ -28,7 +27,6 @@ export const PictureComponent = (pictureProps: PictureProps) => {
 };
 
 const getImage = (prop: any): any => {
-  console.log(prop);
   let urlImage;
   if (prop.src === '1section') {
     urlImage = prop.theme.images.main.src;

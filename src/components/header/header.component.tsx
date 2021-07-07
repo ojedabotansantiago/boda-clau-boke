@@ -32,7 +32,6 @@ const HeaderContainer = styled.header`
 `;
 
 export const Header = (HeaderProps: HeaderProps) => {
-  console.log(HeaderProps);
   return (
     <HeaderContainer>
       <Title>{HeaderProps.title}</Title>

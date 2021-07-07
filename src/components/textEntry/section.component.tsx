@@ -51,7 +51,6 @@ const SecondaryText = styled.a.attrs((props: any) => ({
 `;
 
 export const SectionEntry = (sectionEntryProp: SectionEntryProp) => {
-  console.log(sectionEntryProp);
   if(sectionEntryProp.secondaryText){
 
   }
@@ -66,6 +65,5 @@ export const SectionEntry = (sectionEntryProp: SectionEntryProp) => {
 };
 
 const getLink = (prop: any): any => {
-  console.log(prop);
   return prop.isLink ? prop.href : '';
 };

@@ -104,10 +104,9 @@ export const FormComponent = (FormProps: FromProps) => {
   } = useForm();
 
   const onSubmit = (data: any): void => {
-    console.log(data);
     
     if(!getSetMailValidity(data.mail)){
-      console.log('no mail valid')
+      console.error('no mail valid')
       return;
     }
     firebaseConf
@@ -117,7 +116,7 @@ export const FormComponent = (FormProps: FromProps) => {
       .then((_) => {console.log('form ok')})
       .catch((err) => {
         // Si ha ocurrido un error, actualizamos nuestro estado para mostrar el error
-        console.log(err);
+        console.error('error al enviar el formulario');
       });
   };
 
@@ -131,8 +130,6 @@ export const FormComponent = (FormProps: FromProps) => {
 
   const onchange = (data: any) => {
     setDataChange(data.target.checked);
-    console.log(data.target.checked);
-    console.log('checkBoxGuestValue', checkBoxGuestValue);
   };
 
   return (
