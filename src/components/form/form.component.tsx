@@ -12,6 +12,7 @@ const QuestionsContainer = styled.div`
   width: 100%;
   color: ${(props) => props.theme.palette.primary.main};
   text-align: center;
+  transition: 2s;
 `;
 
 const TitleQuestion = styled.p`
@@ -102,28 +103,31 @@ export const FormComponent = (FormProps: FromProps) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: any): void => {
     console.log(data);
-    getSetMailValidity(data.mail);
-    debugger
-    firebaseConf.database().ref('bodaclausanti').push(data).then((response) => {
-      debugger
-      // Si todo es correcto, actualizamos nuestro estado para mostrar una alerta.
-     console.log(response);
-    }).catch((err) => {
-      debugger
-      // Si ha ocurrido un error, actualizamos nuestro estado para mostrar el error 
-      console.log(err);
-    });
-     
+    
+    if(!getSetMailValidity(data.mail)){
+      console.log('no mail valid')
+      return;
+    }
+    firebaseConf
+      .database()
+      .ref('bodaclausanti')
+      .push(data)
+      .then((_) => {console.log('form ok')})
+      .catch((err) => {
+        // Si ha ocurrido un error, actualizamos nuestro estado para mostrar el error
+        console.log(err);
+      });
   };
 
-  const getSetMailValidity= (mail:string): boolean=> {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const getSetMailValidity = (mail: string): boolean => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const isValidMail = re.test(String(mail).toLowerCase());
     setMailValidity(!isValidMail);
     return isValidMail;
-  }
+  };
 
   const onchange = (data: any) => {
     setDataChange(data.target.checked);
@@ -146,7 +150,7 @@ export const FormComponent = (FormProps: FromProps) => {
         <QuestionsInput {...register('mail', { required: true })} />
         {/* errors will return when field validation fails  */}
         {errors.mail && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
-        { mailValidity && <ErrorQuestion>El Email tiene un formato incorrectof</ErrorQuestion>}
+        {mailValidity && <ErrorQuestion>El Email tiene un formato incorrectof</ErrorQuestion>}
       </QuestionsContainer>
 
       <QuestionsContainer>

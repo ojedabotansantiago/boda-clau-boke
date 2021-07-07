@@ -38,7 +38,7 @@ const MainText = styled.p`
 `;
 
 const SecondaryText = styled.a.attrs((props: any) => ({
-  href: getLink(props),
+ 
 }))`
   @media (min-width: 970px) {
     font-size: 2em;
@@ -52,11 +52,15 @@ const SecondaryText = styled.a.attrs((props: any) => ({
 
 export const SectionEntry = (sectionEntryProp: SectionEntryProp) => {
   console.log(sectionEntryProp);
+  if(sectionEntryProp.secondaryText){
+
+  }
   return (
     <SectionContainer>
       <TitleSection>{sectionEntryProp.titleSection}</TitleSection>
       <MainText>{sectionEntryProp.mainText}</MainText>
-      {sectionEntryProp.secondaryText && <SecondaryText href={sectionEntryProp.secondaryText.src}>{sectionEntryProp.secondaryText.text}</SecondaryText>}
+      {sectionEntryProp.secondaryText &&
+         <SecondaryText href={sectionEntryProp.secondaryText.src} target="_blank">{sectionEntryProp.secondaryText.text}</SecondaryText>}
     </SectionContainer>
   );
 };
