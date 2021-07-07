@@ -3,8 +3,16 @@ import styled from 'styled-components';
 import firebaseConf from '../../Firebase';
 import { useForm } from 'react-hook-form';
 
-type FromProps = {};
+type FromProps = {
+  submitted?: false;
+};
 
+interface formData {
+  guest: boolean;
+  guestName: string;
+  mail: string;
+  name: string;
+}
 const FormContainer = styled.form`
   margin: 1rem 3rem;
 `;
@@ -70,7 +78,9 @@ const CheckBox = styled.input`
   transition: 0.15s;
 `;
 const ButtonSubmit = styled.input`
-  color: ${(props) => props.theme.palette.common.white};
+  color: ${(props) =>
+    props.theme.palette.common.white
+  };
   font-size: 1em;
   padding: 0.25em 1em;
   border: 2px solid ${(props) => props.theme.palette.primary.main};
@@ -93,7 +103,33 @@ const ButtonSubmit = styled.input`
   transition: 0.15s;
   margin-top: 5%;
 `;
-export const FormComponent = (FormProps: FromProps) => {
+const ButtonFormSended = styled.div`
+  font-size: 1em;
+  transition: 0.15s;
+  text-align: center;
+  @media (min-width: 970px) {
+    font-size: 1em;
+  }
+  @media (max-width: 500px) {
+    font-size: 1em;
+  }
+  color: ${(props) => props.theme.palette.primary.main};
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: 5px;
+  height: 35px;
+  border-color: transparent;
+  box-shadow: 0px;
+  outline: none;
+  transition: 0.15s;
+  margin-top: 5%;
+`;
+export const FormComponent = (FormProps?: FromProps) => {
+  const [isFormSended, setDataFormSended] = useState(false);
+  const [isFormSuccess, setDataFormSuccess] = useState(false);
   const [checkBoxGuestValue, setDataChange] = useState(false);
   const [mailValidity, setMailValidity] = useState(false);
   const {
@@ -101,24 +137,29 @@ export const FormComponent = (FormProps: FromProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data: any): void => {
-    
-    if(!getSetMailValidity(data.mail)){
-      console.error('no mail valid')
+  const onSubmit = (data: formData): void => {
+    if (!getSetMailValidity(data.mail) || isFormSended) {
+      console.error('no mail valid');
       return;
     }
+    setDataFormSended(true);
+    sendForm(data);
+  };
+  const sendForm = (data: formData): void => {
     firebaseConf
       .database()
       .ref('bodaclausanti')
       .push(data)
-      .then((_) => {console.log('form ok')})
+      .then((_) => {
+        console.log('form ok');
+        setDataFormSuccess(true);
+      })
       .catch((err) => {
         // Si ha ocurrido un error, actualizamos nuestro estado para mostrar el error
         console.error('error al enviar el formulario');
+        setDataFormSuccess(false);
       });
   };
-
   const getSetMailValidity = (mail: string): boolean => {
     const re =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -167,7 +208,9 @@ export const FormComponent = (FormProps: FromProps) => {
           {errors.name && <ErrorQuestion> This field is required </ErrorQuestion>}
         </QuestionsContainer>
       )}
-      <ButtonSubmit type='submit' />
+      {isFormSuccess ? ( <ButtonFormSended>Formulario enviado correctamente, nos vemos el 11 de Septiembre del 2021</ButtonFormSended>) : <ButtonSubmit type='submit' />}
+     
+     
     </FormContainer>
   );
 };
