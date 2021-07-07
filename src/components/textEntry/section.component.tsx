@@ -64,6 +64,7 @@ export const SectionEntry = (sectionEntryProp: SectionEntryProp) => {
   );
 };
 
-const getLink = (prop: any): any => {
+/* const getLink = (prop: any): any => {
   return prop.isLink ? prop.href : '';
 };
+ */

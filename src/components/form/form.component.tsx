@@ -99,7 +99,6 @@ export const FormComponent = (FormProps: FromProps) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
