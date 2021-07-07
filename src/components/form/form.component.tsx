@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import firebaseConf from '../../Firebase';
 import { useForm } from 'react-hook-form';
 
 type FromProps = {};
@@ -105,14 +105,24 @@ export const FormComponent = (FormProps: FromProps) => {
   const onSubmit = (data: any) => {
     console.log(data);
     getSetMailValidity(data.mail);
-
+    debugger
+    firebaseConf.database().ref('bodaclausanti').push(data).then((response) => {
+      debugger
+      // Si todo es correcto, actualizamos nuestro estado para mostrar una alerta.
+     console.log(response);
+    }).catch((err) => {
+      debugger
+      // Si ha ocurrido un error, actualizamos nuestro estado para mostrar el error 
+      console.log(err);
+    });
      
   };
 
-  const getSetMailValidity= (mail:string)=> {
+  const getSetMailValidity= (mail:string): boolean=> {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const isValidMail = re.test(String(mail).toLowerCase());
     setMailValidity(!isValidMail);
+    return isValidMail;
   }
 
   const onchange = (data: any) => {
