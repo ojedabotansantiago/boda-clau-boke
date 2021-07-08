@@ -40,12 +40,7 @@ const MainText = styled.p`
 const SecondaryText = styled.a.attrs((props: any) => ({
  
 }))`
-  @media (min-width: 970px) {
-    font-size: 2em;
-  }
-  @media (max-width: 500px) {
-    font-size: 1em;
-  }
+
   color: ${(props) => props.theme.palette.primary.main};
   text-align: center;
 `;
@@ -59,7 +54,7 @@ export const SectionEntry = (sectionEntryProp: SectionEntryProp) => {
       <TitleSection>{sectionEntryProp.titleSection}</TitleSection>
       <MainText>{sectionEntryProp.mainText}</MainText>
       {sectionEntryProp.secondaryText &&
-         <SecondaryText href={sectionEntryProp.secondaryText.src} target="_blank">{sectionEntryProp.secondaryText.text}</SecondaryText>}
+        <MainText><SecondaryText href={sectionEntryProp.secondaryText.src} target="_blank">{sectionEntryProp.secondaryText.text}</SecondaryText></MainText>}
     </SectionContainer>
   );
 };

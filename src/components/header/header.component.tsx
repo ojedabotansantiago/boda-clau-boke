@@ -13,7 +13,7 @@ const Title = styled.h1`
     font-size: 2em;
   }
   text-align: center;
-  color: ${(props) => props.theme.palette.primary.main};
+  color: rgb(83 83 115);
 `;
 const Subtitle = styled.p`
   @media (min-width: 970px) {
