@@ -46,10 +46,10 @@ const ErrorQuestion = styled.div`
 `;
 const QuestionsInput = styled.input`
   @media (min-width: 970px) {
-    font-size: 1em;
+    font-size: 2em;
   }
   @media (max-width: 500px) {
-    font-size: 1em;
+    font-size: 2em;
   }
   color: ${(props) => props.theme.palette.primary.main};
   text-align: center;
