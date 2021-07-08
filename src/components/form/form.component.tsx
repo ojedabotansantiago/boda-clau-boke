@@ -78,9 +78,7 @@ const CheckBox = styled.input`
   transition: 0.15s;
 `;
 const ButtonSubmit = styled.input`
-  color: ${(props) =>
-    props.theme.palette.common.white
-  };
+  color: ${(props) => props.theme.palette.common.white};
   font-size: 1em;
   padding: 0.25em 1em;
   border: 2px solid ${(props) => props.theme.palette.primary.main};
@@ -104,28 +102,17 @@ const ButtonSubmit = styled.input`
   margin-top: 5%;
 `;
 const ButtonFormSended = styled.div`
-  font-size: 1em;
-  transition: 0.15s;
-  text-align: center;
   @media (min-width: 970px) {
-    font-size: 1em;
+    font-size: 2em;
   }
   @media (max-width: 500px) {
-    font-size: 1em;
+    font-size: 0.99em;
   }
   color: ${(props) => props.theme.palette.primary.main};
   text-align: center;
-  cursor: pointer;
-  margin-bottom: 0;
-  text-transform: uppercase;
+  margin-top: 3%;
+  margin-bottom: 3%;
   width: 100%;
-  border-radius: 5px;
-  height: 35px;
-  border-color: transparent;
-  box-shadow: 0px;
-  outline: none;
-  transition: 0.15s;
-  margin-top: 5%;
 `;
 export const FormComponent = (FormProps?: FromProps) => {
   const [isFormSended, setDataFormSended] = useState(false);
@@ -174,33 +161,40 @@ export const FormComponent = (FormProps?: FromProps) => {
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
-      <QuestionsContainer>
-        {/* register your input into the hook by invoking the "register" function */}
-        <TitleQuestion>Nombre del asistente: </TitleQuestion>
-        <QuestionsInput {...register('name', { required: true })} />
-        {errors.name && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
-      </QuestionsContainer>
+      {!isFormSuccess && (
+        <QuestionsContainer>
+          {/* register your input into the hook by invoking the "register" function */}
+          <TitleQuestion>Nombre del asistente: </TitleQuestion>
+          <QuestionsInput {...register('name', { required: true })} />
+          {errors.name && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
+        </QuestionsContainer>
+      )}
 
-      <QuestionsContainer>
-        {/* include validation with required or other standard HTML validation rules */}
-        <TitleQuestion>Email del asistente: </TitleQuestion>
-        <QuestionsInput {...register('mail', { required: true })} />
-        {/* errors will return when field validation fails  */}
-        {errors.mail && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
-        {mailValidity && <ErrorQuestion>El Email tiene un formato incorrectof</ErrorQuestion>}
-      </QuestionsContainer>
+      {!isFormSuccess && (
+        <QuestionsContainer>
+          {/* include validation with required or other standard HTML validation rules */}
+          <TitleQuestion>Email del asistente: </TitleQuestion>
+          <QuestionsInput {...register('mail', { required: true })} />
+          {/* errors will return when field validation fails  */}
+          {errors.mail && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
+          {mailValidity && <ErrorQuestion>El Email tiene un formato incorrectof</ErrorQuestion>}
+        </QuestionsContainer>
+      )}
 
-      <QuestionsContainer>
-        <TitleQuestion>Vienes con acompañante</TitleQuestion>
-        <CheckBox
-          {...register('guest')}
-          type='checkbox'
-          onChange={(ev) => {
-            onchange(ev);
-          }}
-        />
-      </QuestionsContainer>
-      {checkBoxGuestValue && (
+      {!isFormSuccess && (
+        <QuestionsContainer>
+          <TitleQuestion>Vienes con acompañante</TitleQuestion>
+          <CheckBox
+            {...register('guest')}
+            type='checkbox'
+            onChange={(ev) => {
+              onchange(ev);
+            }}
+          />
+        </QuestionsContainer>
+      )}
+
+      {checkBoxGuestValue && !isFormSuccess && (
         <QuestionsContainer>
           {/* register your input into the hook by invoking the "register" function */}
           <TitleQuestion> Nombre del Acompañante: </TitleQuestion>
@@ -208,9 +202,15 @@ export const FormComponent = (FormProps?: FromProps) => {
           {errors.name && <ErrorQuestion> This field is required </ErrorQuestion>}
         </QuestionsContainer>
       )}
-      {isFormSuccess ? ( <ButtonFormSended>Formulario enviado correctamente, nos vemos el 11 de Septiembre del 2021</ButtonFormSended>) : <ButtonSubmit type='submit' />}
-     
-     
+
+      {isFormSuccess ? (
+        <ButtonFormSended>
+          <h3>!Muchas gracias!</h3>
+          <h3>El formulario ha sido enviado correctamente, nos vemos el 11 de Septiembre del 2021</h3>
+        </ButtonFormSended>
+      ) : (
+        <ButtonSubmit type='submit' />
+      )}
     </FormContainer>
   );
 };
