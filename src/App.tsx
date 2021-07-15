@@ -70,8 +70,8 @@ function App() {
      para esta nueva etapa que empezamos juntos',
     secondaryText: {
       isLink: true,
-      text: 'ES-XXX-XXXX-XXX-XXXX-XXX',
-      src: 'https://goo.gl/maps/bmHfummf3WvNVRjY7',
+      text: 'ES24-0073-0100-5005-9240-4249',
+      src: 'ES24-0073-0100-5005-9240-4249',
     },
   };
   const sectionEntryForm: SectionEntryProp = {
@@ -80,7 +80,7 @@ function App() {
       'Con el fin agilizar los temas de trasporte y asistencia os dejamos un formulario de contacto para que nos indiqueis vuestras preferencias',
     secondaryText: {
       isLink: true,
-      text: 'ES-XXX-XXXX-XXX-XXXX-XXX',
+      text: 'ES24-0073-0100-5005-9240-4249',
       src: 'https://goo.gl/maps/bmHfummf3WvNVRjY7',
     },
   };
