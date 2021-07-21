@@ -192,7 +192,7 @@ export const FormComponent = (FormProps?: FromProps) => {
           <QuestionsInput {...register('mail', { required: true })} />
           {/* errors will return when field validation fails  */}
           {errors.mail && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
-          {mailValidity && <ErrorQuestion>El Email tiene un formato incorrectof</ErrorQuestion>}
+          {mailValidity && <ErrorQuestion>El Email tiene un formato incorrecto</ErrorQuestion>}
         </QuestionsContainer>
       )}
 
@@ -220,7 +220,7 @@ export const FormComponent = (FormProps?: FromProps) => {
 
       {!isFormSuccess && (
         <QuestionsContainer>
-          <TitleQuestion>¿Iras en los autobuses?</TitleQuestion>
+          <TitleQuestion>¿Irás en los autobuses?</TitleQuestion>
           <CheckBox
             {...register('transport')}
             type='checkbox'
@@ -233,21 +233,21 @@ export const FormComponent = (FormProps?: FromProps) => {
       {checkBoxTransportValue && !isFormSuccess && (
         <QuestionsContainer>
           {/* register your input into the hook by invoking the "register" function */}
-          <TitleQuestion>¿Cuantos sois para el transporte? </TitleQuestion>
+          <TitleQuestion>¿Cuántos sois para el transporte?</TitleQuestion>
           <QuestionsInput type='number' min='1' max='5' {...register('transportNumber', { required: true })} />
-          {errors.transportNumber && <ErrorQuestion>Este campo es requerido </ErrorQuestion>}
+          {errors.transportNumber && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
         </QuestionsContainer>
       )}
       {checkBoxTransportValue && !isFormSuccess && (
         <QuestionsContainer>
           {/* register your input into the hook by invoking the "register" function */}
-          <TitleQuestion>¿donde te gustaria que te dejara el autobus de vuelta? </TitleQuestion>
+          <TitleQuestion>¿Dónde te gustaría que te dejara el autobús de vuelta?</TitleQuestion>
 
           <Selector  {...register('guestName', { required: true })} {...register('stops', { required: true })}>
             <option value='rozas'>Las Rozas</option>
             <option value='madrid'>Madrid</option>
           </Selector>
-          {errors.stops && <ErrorQuestion> Por favor seleciona una parada </ErrorQuestion>}
+          {errors.stops && <ErrorQuestion>Por favor selecciona una parada</ErrorQuestion>}
         </QuestionsContainer>
       )}
 
