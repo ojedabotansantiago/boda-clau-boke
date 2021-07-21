@@ -32,12 +32,12 @@ function App() {
   const sectionEntryGeneral: SectionEntryProp = {
     titleSection: 'Informacion',
     mainText:
-      'La boda dara comienzo el proximo 11 de Septiembre del 2021 a las 11.45 en la iglesa San Jerónimo el Real de Madrid donde despues \
-     de mas de 9 añazo de noviazgo y un año de retraso en la boda podremos al fin celebrar la en este inolvidable dia.',
+      'La boda dará comienzo a las 12:15 de la mañana en la Iglesia San Jerónimo el Real de Madrid donde Después \
+     de más de 9 añazo de noviazgo y un año de retraso podremos, al fin, celebrar este día inolvidable',
   };
   const sectionEntryChurch: SectionEntryProp = {
     titleSection: 'Iglesia',
-    mainText: 'La boda sera el proximo dia 11 de Septiembre del 2021 a las 11.45 en la Iglesa San Jerónimo el Real de Madrid',
+    mainText: 'La boda dará comienzo a las 12:15 de la mañana en la Iglesa San Jerónimo el Real de Madrid',
     secondaryText: {
       isLink: true,
       text: 'Seleciona este enlace para obtener mas infomación de la dirección de la iglesia',
@@ -46,7 +46,7 @@ function App() {
   };
   const sectionEntryPalace: SectionEntryProp = {
     titleSection: 'Banquete',
-    mainText: 'La clebracion de la boda sera en en la finca San Antonio (Carretera M-618, Km. 15, M-618, 28240 Hoyo de Manzanares, Madrid)',
+    mainText: 'la celebración será en la finca San Antonio (Carretera M-618, Km. 15, M-618, 28240 Hoyo de Manzanares, Madrid)',
     secondaryText: {
       isLink: true,
       text: 'Seleciona este enlace para obtener mas infomacion acerca de la fina San Antonio',
@@ -54,20 +54,19 @@ function App() {
     },
   };
   const sectionEntryTransportChurch: SectionEntryProp = {
-    titleSection: 'Trasporte iglesa direccion finca',
-    mainText: 'Para el desplazamiento de la iglesa a la finca se habilitara un bus que saldra 15 minutos de que acabe la celebracion en la iglesia',
+    titleSection: 'Transporte iglesia - finca:',
+    mainText: 'Para el desplazamiento de la iglesa a la finca se habilitarán autobuses que saldrán aproximadamente a las 13:45',
   };
   const sectionEntryTransportPalace: SectionEntryProp = {
     titleSection: 'Regreso a casa',
     mainText:
-      'Para cerrar la celebracion y este dia especial, al finalizar la barra libre, se habilitaran autobuses con direccion a las Rozas de Madrid \
+    'Para cerrar la celebración y este día tan especial, al finalizar la barra libre dispondréis de autobuses a las rozas de madrid \
      y hacia la calle Doctor Esquerdo cruce con Sainz de Baranda',
   };
   const sectionEntryCount: SectionEntryProp = {
     titleSection: '',
     mainText:
-      'Aunque para nosotros lo mas importante es tu presencia, dejamps nuestro numero de cuenta a vuestra disposicion por si queres hacer una colavoracion\
-     para esta nueva etapa que empezamos juntos',
+      'Aunque para nosotros lo más importante es que pases este día con nosotros, os dejamos nuestro número de cuenta por si queréis participar en esta nueva aventura que nos espera',
     secondaryText: {
       isLink: true,
       text: 'ES24-0073-0100-5005-9240-4249',
@@ -77,7 +76,7 @@ function App() {
   const sectionEntryForm: SectionEntryProp = {
     titleSection: 'Formulario de contacto',
     mainText:
-      'Con el fin agilizar los temas de trasporte y asistencia os dejamos un formulario de contacto para que nos indiqueis vuestras preferencias',
+      'Con el fin de agilizar los temas de transporte y asistencia os dejamos un formulario de contacto para que nos indiqueis vuestras preferencias',
     secondaryText: {
       isLink: true,
       text: 'ES24-0073-0100-5005-9240-4249',
