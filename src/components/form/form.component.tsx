@@ -263,7 +263,7 @@ export const FormComponent = (FormProps?: FromProps) => {
             <option value='rozas'>Las Rozas</option>
             <option value='madrid'>Madrid</option>
           </Selector>
-          {errors.stops && <ErrorQuestion>Por favor selecciona una parada</ErrorQuestion>}
+          {errors.guestName && <ErrorQuestion>Por favor selecciona una parada</ErrorQuestion>}
         </QuestionsContainer>
       )}
 
