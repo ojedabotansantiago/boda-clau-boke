@@ -116,13 +116,20 @@ const ButtonFormSended = styled.div`
   width: 100%;
 `;
 const Selector = styled.select`
+  @media (min-width: 970px) {
+    font-size: 1.5em;
+    width: 20%;
+  }
+  @media (max-width: 500px) {
+    font-size: 0.70em;
+    width: 50%;
+  }
   color: ${(props) => props.theme.palette.primary.main};
   text-align: center;
   margin-top: 3%;
   margin-bottom: 3%;
-  width: 20%;
+  
   border: 2px solid ${(props) => props.theme.palette.primary.main};    
-  font-size: 1.5em;
 `;
 export const FormComponent = (FormProps?: FromProps) => {
   const [isFormSended, setDataFormSended] = useState(false);
@@ -244,6 +251,7 @@ export const FormComponent = (FormProps?: FromProps) => {
           <TitleQuestion>¿Dónde te gustaría que te dejara el autobús de vuelta?</TitleQuestion>
 
           <Selector  {...register('guestName', { required: true })} {...register('stops', { required: true })}>
+            <option disabled selected hidden>selecciona una parada</option>
             <option value='rozas'>Las Rozas</option>
             <option value='madrid'>Madrid</option>
           </Selector>
