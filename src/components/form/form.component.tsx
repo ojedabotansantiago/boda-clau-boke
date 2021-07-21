@@ -248,7 +248,7 @@ export const FormComponent = (FormProps?: FromProps) => {
       {checkBoxTransportValue && !isFormSuccess && (
         <QuestionsContainer>
           {/* register your input into the hook by invoking the "register" function */}
-          <TitleQuestion>¿Cuántos sois en total para el transporte?</TitleQuestion>
+          <TitleQuestion>¿Cuántos sois en total para el autobús?</TitleQuestion>
           <QuestionsInput type='number' min='1' max='5' {...register('transportNumber', { required: true })} />
           {errors.transportNumber && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
         </QuestionsContainer>
