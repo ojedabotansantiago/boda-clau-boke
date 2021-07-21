@@ -101,6 +101,7 @@ const ButtonSubmit = styled.input`
   transition: 0.15s;
   margin-top: 5%;
 `;
+
 const ButtonFormSended = styled.div`
   @media (min-width: 970px) {
     font-size: 2em;
@@ -118,6 +119,7 @@ export const FormComponent = (FormProps?: FromProps) => {
   const [isFormSended, setDataFormSended] = useState(false);
   const [isFormSuccess, setDataFormSuccess] = useState(false);
   const [checkBoxGuestValue, setDataChange] = useState(false);
+  const [checkBoxTransportValue, setTransportDataChange] = useState(false);
   const [mailValidity, setMailValidity] = useState(false);
   const {
     register,
@@ -157,6 +159,9 @@ export const FormComponent = (FormProps?: FromProps) => {
 
   const onchange = (data: any) => {
     setDataChange(data.target.checked);
+  };
+  const onchangeTransport = (data: any) => {
+    setTransportDataChange(data.target.checked);
   };
 
   return (
@@ -199,7 +204,28 @@ export const FormComponent = (FormProps?: FromProps) => {
           {/* register your input into the hook by invoking the "register" function */}
           <TitleQuestion> Nombre del Acompañante: </TitleQuestion>
           <QuestionsInput {...register('guestName', { required: true })} />
-          {errors.name && <ErrorQuestion> This field is required </ErrorQuestion>}
+          {errors.guestName && <ErrorQuestion> This field is required </ErrorQuestion>}
+        </QuestionsContainer>
+      )}
+
+      {!isFormSuccess && (
+        <QuestionsContainer>
+          <TitleQuestion>¿Iras en los autobuses?</TitleQuestion>
+          <CheckBox
+            {...register('transport')}
+            type='checkbox'
+            onChange={(ev) => {
+              onchangeTransport(ev);
+            }}
+          />
+        </QuestionsContainer>
+      )}
+      {checkBoxTransportValue && !isFormSuccess && (
+        <QuestionsContainer>
+          {/* register your input into the hook by invoking the "register" function */}
+          <TitleQuestion>  Cuantos sois para el transporte: </TitleQuestion>
+          <QuestionsInput type="number" min="1" max="5" {...register('transportNumber', { required: true })} />
+          {errors.transportNumber && <ErrorQuestion> This field is required </ErrorQuestion>}
         </QuestionsContainer>
       )}
 

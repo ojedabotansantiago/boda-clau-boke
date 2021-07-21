@@ -83,6 +83,17 @@ function App() {
       src: 'https://goo.gl/maps/bmHfummf3WvNVRjY7',
     },
   };
+  const sectionCovidData: SectionEntryProp = {
+    titleSection: '',
+    mainText:
+      'Confiamos en que pueda ser una boda normal y que el covid nos la estropee. Es por esto que os pedimos que confirméis lo antes posible y así poder organizarnos según la normativa vigente. \
+      Cualquier duda que os surga os dejamos nuestro números de teléfono:',
+      secondaryText: {
+        isLink: true,
+        text: 'Claudia 66174907 && Santiago: 699664861 ',
+        src: '66174907',
+      },
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -118,7 +129,11 @@ function App() {
           mainText={sectionEntryForm.mainText}
         ></SectionEntry>
         <FormComponent></FormComponent>
-
+        <SectionEntry
+          titleSection={sectionCovidData.titleSection}
+          mainText={sectionCovidData.mainText}
+          secondaryText={sectionCovidData.secondaryText}
+        ></SectionEntry>
       </div>
     </ThemeProvider>
   );
