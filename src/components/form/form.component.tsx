@@ -115,6 +115,15 @@ const ButtonFormSended = styled.div`
   margin-bottom: 3%;
   width: 100%;
 `;
+const Selector = styled.select`
+  color: ${(props) => props.theme.palette.primary.main};
+  text-align: center;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 20%;
+  border: 2px solid ${(props) => props.theme.palette.primary.main};    
+  font-size: 1.5em;
+`;
 export const FormComponent = (FormProps?: FromProps) => {
   const [isFormSended, setDataFormSended] = useState(false);
   const [isFormSuccess, setDataFormSuccess] = useState(false);
@@ -134,6 +143,7 @@ export const FormComponent = (FormProps?: FromProps) => {
     setDataFormSended(true);
     sendForm(data);
   };
+
   const sendForm = (data: formData): void => {
     firebaseConf
       .database()
@@ -188,7 +198,7 @@ export const FormComponent = (FormProps?: FromProps) => {
 
       {!isFormSuccess && (
         <QuestionsContainer>
-          <TitleQuestion>Vienes con acompañante</TitleQuestion>
+          <TitleQuestion>¿Vienes con acompañante?</TitleQuestion>
           <CheckBox
             {...register('guest')}
             type='checkbox'
@@ -204,7 +214,7 @@ export const FormComponent = (FormProps?: FromProps) => {
           {/* register your input into the hook by invoking the "register" function */}
           <TitleQuestion> Nombre del Acompañante: </TitleQuestion>
           <QuestionsInput {...register('guestName', { required: true })} />
-          {errors.guestName && <ErrorQuestion> This field is required </ErrorQuestion>}
+          {errors.guestName && <ErrorQuestion> Este campo es requerido </ErrorQuestion>}
         </QuestionsContainer>
       )}
 
@@ -223,9 +233,21 @@ export const FormComponent = (FormProps?: FromProps) => {
       {checkBoxTransportValue && !isFormSuccess && (
         <QuestionsContainer>
           {/* register your input into the hook by invoking the "register" function */}
-          <TitleQuestion>  Cuantos sois para el transporte: </TitleQuestion>
-          <QuestionsInput type="number" min="1" max="5" {...register('transportNumber', { required: true })} />
-          {errors.transportNumber && <ErrorQuestion> This field is required </ErrorQuestion>}
+          <TitleQuestion>¿Cuantos sois para el transporte? </TitleQuestion>
+          <QuestionsInput type='number' min='1' max='5' {...register('transportNumber', { required: true })} />
+          {errors.transportNumber && <ErrorQuestion>Este campo es requerido </ErrorQuestion>}
+        </QuestionsContainer>
+      )}
+      {checkBoxTransportValue && !isFormSuccess && (
+        <QuestionsContainer>
+          {/* register your input into the hook by invoking the "register" function */}
+          <TitleQuestion>¿donde te gustaria que te dejara el autobus de vuelta? </TitleQuestion>
+
+          <Selector  {...register('guestName', { required: true })} {...register('stops', { required: true })}>
+            <option value='rozas'>Las Rozas</option>
+            <option value='madrid'>Madrid</option>
+          </Selector>
+          {errors.stops && <ErrorQuestion> Por favor seleciona una parada </ErrorQuestion>}
         </QuestionsContainer>
       )}
 
