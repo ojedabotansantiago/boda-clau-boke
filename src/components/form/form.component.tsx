@@ -127,7 +127,7 @@ const Selector = styled.select`
   color: ${(props) => props.theme.palette.primary.main};
   text-align: center;
   margin-top: 3%;
-  margin-bottom: 3%;
+  margin-bottom:1%;
   
   border: 2px solid ${(props) => props.theme.palette.primary.main};    
 `;
@@ -186,8 +186,16 @@ export const FormComponent = (FormProps?: FromProps) => {
       {!isFormSuccess && (
         <QuestionsContainer>
           {/* register your input into the hook by invoking the "register" function */}
-          <TitleQuestion>Nombre del asistente: </TitleQuestion>
+          <TitleQuestion>Nombre del asistente:</TitleQuestion>
           <QuestionsInput {...register('name', { required: true })} />
+          {errors.name && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
+        </QuestionsContainer>
+      )}
+      {!isFormSuccess && (
+        <QuestionsContainer>
+          {/* register your input into the hook by invoking the "register" function */}
+          <TitleQuestion>Apellidos del asistente: </TitleQuestion>
+          <QuestionsInput {...register('surname', { required: true })} />
           {errors.name && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
         </QuestionsContainer>
       )}
@@ -195,7 +203,7 @@ export const FormComponent = (FormProps?: FromProps) => {
       {!isFormSuccess && (
         <QuestionsContainer>
           {/* include validation with required or other standard HTML validation rules */}
-          <TitleQuestion>Email del asistente: </TitleQuestion>
+          <TitleQuestion>Email del asistente:</TitleQuestion>
           <QuestionsInput {...register('mail', { required: true })} />
           {/* errors will return when field validation fails  */}
           {errors.mail && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
@@ -240,7 +248,7 @@ export const FormComponent = (FormProps?: FromProps) => {
       {checkBoxTransportValue && !isFormSuccess && (
         <QuestionsContainer>
           {/* register your input into the hook by invoking the "register" function */}
-          <TitleQuestion>¿Cuántos sois para el transporte?</TitleQuestion>
+          <TitleQuestion>¿Cuántos sois en total para el transporte?</TitleQuestion>
           <QuestionsInput type='number' min='1' max='5' {...register('transportNumber', { required: true })} />
           {errors.transportNumber && <ErrorQuestion>Este campo es requerido</ErrorQuestion>}
         </QuestionsContainer>
@@ -250,8 +258,8 @@ export const FormComponent = (FormProps?: FromProps) => {
           {/* register your input into the hook by invoking the "register" function */}
           <TitleQuestion>¿Dónde te gustaría que te dejara el autobús de vuelta?</TitleQuestion>
 
-          <Selector  {...register('guestName', { required: true })} {...register('stops', { required: true })}>
-            <option disabled selected hidden>selecciona una parada</option>
+          <Selector defaultValue=""  {...register('guestName', { required: true })} {...register('stops', { required: true })}>
+            <option value="" disabled hidden>selecciona una parada</option>
             <option value='rozas'>Las Rozas</option>
             <option value='madrid'>Madrid</option>
           </Selector>
