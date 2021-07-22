@@ -32,11 +32,11 @@ function App() {
   const sectionEntryGeneral: SectionEntryProp = {
     titleSection: 'Informacion',
     mainText:
-      'La boda dará comienzo a las 12:15 de la mañana en la Iglesia San Jerónimo el Real de Madrid donde Después de más de 9 año de noviazgo y un año de retraso podremos, al fin, celebrar este día inolvidable',
+      'La boda dará comienzo a las 12:15 de la mañana en la Iglesia San Jerónimo el Real de Madrid donde, después de más de 9 años de noviazgo y un año de retraso, podremos al fin, celebrar este día inolvidable',
   };
   const sectionEntryChurch: SectionEntryProp = {
     titleSection: 'Iglesia',
-    mainText: 'La boda dará comienzo a las 12:15 de la mañana en la Iglesia San Jerónimo el Real de Madrid',
+    mainText: 'La ceremonia comenzará a las 12:15 de la mañana en la Iglesia San Jerónimo el Real de Madrid',
     secondaryText: {
       isLink: true,
       text: 'Selecciona este enlace para obtener más información de la dirección de la iglesia',
@@ -86,7 +86,7 @@ function App() {
     titleSection: '',
     mainText:
       'Confiamos en que pueda ser una boda normal y que el covid no nos la estropee. Es por esto que os pedimos que confirméis lo antes posible y así poder organizarnos según la normativa vigente. \
-      Cualquier duda que os surja rga os dejamos nuestro números de teléfono:',
+      Cualquier duda que os surja os dejamos nuestro números de teléfono:',
       secondaryText: {
         isLink: true,
         text: 'Claudia 66174907 && Santiago: 699664861 ',

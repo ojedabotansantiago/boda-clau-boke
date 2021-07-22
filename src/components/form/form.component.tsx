@@ -258,7 +258,7 @@ export const FormComponent = (FormProps?: FromProps) => {
           {/* register your input into the hook by invoking the "register" function */}
           <TitleQuestion>¿Dónde te gustaría que te dejara el autobús de vuelta?</TitleQuestion>
 
-          <Selector defaultValue=""  {...register('guestName', { required: true })} {...register('stops', { required: true })}>
+          <Selector defaultValue="" {...register('stops', { required: true })}>
             <option value="" disabled hidden>selecciona una parada</option>
             <option value='rozas'>Las Rozas</option>
             <option value='madrid'>Madrid</option>
